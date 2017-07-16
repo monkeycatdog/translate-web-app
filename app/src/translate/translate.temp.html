@@ -1,0 +1,29 @@
+<div class='translate-block'>
+    <div class="field-data">
+        <div class="header-field">
+            <a href="https://translate.yandex.ru/">Translated service "Yandex.Translator"</a>
+            <div class="error" ng-if="$ctrl.error">Specify the translation parameters</div>
+        </div>
+        <div class="select-lang">
+            <label for="lang-in"><p>Input:</p></label>
+            <select id='lang-in' ng-model="$ctrl.query['inLang']">
+                <option ng-repeat="(key, value) in $ctrl.lang" value="{{key}}">{{value}}</option>
+            </select>
+            <label for="lang-out"><p>Output:</p></label>
+            <select id='lang-out' ng-model="$ctrl.query['toLang']"> 
+                <option ng-repeat="(key, value) in $ctrl.lang | langfilter" value="{{key}}">{{value}}</option>
+            </select>
+        </div>
+        <div class="field-inputs">
+            <textarea font-resize type="text" ng-model="$ctrl.query['text']" required></textarea>
+            <button ng-click="$ctrl.submit()">Translate!</button>
+        </div>
+    </div>
+
+
+    <div class="field-output">
+        <div class="field-outputs">
+            <textarea type="text" ng-model="$ctrl.result.text[0]" readonly></textarea>
+        </div>
+    </div>
+</div>
